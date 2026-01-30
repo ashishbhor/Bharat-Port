@@ -13,9 +13,10 @@
     "axios": "^1.13.2",
     "firebase": "^12.8.0",
     "framer-motion": "^12.28.1",
+    "pdf-parse": "^1.1.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.12.0"
+    "react-router-dom": "^7.13.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

@@ -5,8 +5,8 @@ export const fakeJobs = [
         department: "Public Works Department",
         location: "Maharashtra",
         type: "Government",
-        lastDate: "2026-02-10",
-        description: "Responsible for site supervision and reports."
+        description: "Site supervision and civil works",
+        lastDate: "2026-02-10"
     },
     {
         id: "job2",
@@ -14,7 +14,16 @@ export const fakeJobs = [
         department: "Health Department",
         location: "Gujarat",
         type: "Government",
-        lastDate: "2026-03-01",
-        description: "Hospital and community healthcare duties."
+        description: "Hospital and community healthcare",
+        lastDate: "2026-03-01"
+    },
+    {
+        id: "job3",
+        title: "Clerk",
+        department: "Revenue Department",
+        location: "Maharashtra",
+        type: "Government",
+        description: "Office and record maintenance",
+        lastDate: "2026-01-25"
     }
 ];

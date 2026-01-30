@@ -16,13 +16,12 @@ export default function JobCard({ job }) {
         <div className="bg-white p-5 rounded-xl shadow hover:shadow-lg transition">
             <h3 className="font-semibold text-lg">{job.title}</h3>
             <p className="text-sm text-gray-600">{job.department}</p>
+            <p className="text-xs text-red-600 mt-1">Last Date: {job.lastDate}</p>
             <p className="text-sm">{job.location}</p>
-
             <div className="flex justify-between items-center mt-4">
                 <Link to={`/jobs/${job.id}`} className="text-accent">
                     View Details →
                 </Link>
-
                 <button
                     onClick={handleSave}
                     className="text-sm bg-primary text-white px-3 py-1 rounded"

@@ -1,15 +1,38 @@
-import { fakeJobs } from "../utils/fakeJobs";
-import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
+import {
+    collection,
+    getDocs,
+    query,
+    orderBy,
+    doc,
+    updateDoc,
+    arrayUnion
+} from "firebase/firestore";
+
 
 export const getJobs = async () => {
-    return new Promise((resolve) => {
-        setTimeout(() => resolve(fakeJobs), 500);
-    });
+    const q = query(
+        collection(db, "jobs"),
+        orderBy("createdAt", "desc")
+    );
+
+    const snapshot = await getDocs(q);
+
+    return snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+    }));
 };
 
 export const getJobById = async (id) => {
-    return fakeJobs.find(job => job.id === id);
+    const snapshot = await getDocs(collection(db, "jobs"));
+
+    const jobs = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+    }));
+
+    return jobs.find((job) => job.id === id);
 };
 
 export const saveJob = async (userId, job) => {
