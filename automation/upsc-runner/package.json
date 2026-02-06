@@ -1,0 +1,17 @@
+{
+    "name": "upsc-runner",
+    "version": "1.0.0",
+    "type": "module",
+    "private": true,
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "node-cron": "^3.0.3",
+        "node-fetch": "^3.3.2",
+        "pdf-parse": "^2.4.5",
+        "firebase-admin": "^12.0.0",
+        "tesseract.js": "^5.0.5",
+        "pdf2pic": "^3.1.2"
+    }
+}
