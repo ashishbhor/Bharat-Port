@@ -1,8 +1,11 @@
 import fetch from "node-fetch";
-import pdfParse from "pdf-parse";
 import { Buffer } from "buffer";
 import Tesseract from "tesseract.js";
 import { fromBuffer } from "pdf2pic";
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+const pdfParse = require("pdf-parse");
 
 async function runOCR(pdfBuffer) {
     try {
@@ -48,7 +51,6 @@ export async function extractData(pdfUrl) {
         }
 
         return text || "";
-
     } catch (err) {
         console.log("🔥 PDF TOTAL FAIL:", err.message);
         return "";

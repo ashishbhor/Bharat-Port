@@ -2,7 +2,7 @@ import cron from "node-cron";
 import { db } from "./firebase.js";
 
 import { fetchSSCNotices } from "./sources/ssc.js";
-import { extractSSCData } from "./utils/pdf.js";
+import { extractData } from "./utils/pdf.js";
 import { buildDedupeKey, isDuplicate } from "./utils/dedupe.js";
 
 const CUTOFF_DATE = new Date("2026-01-01");
@@ -26,7 +26,7 @@ async function runAutomation() {
         try {
             console.log("\n📥 Processing:", notice.pdfUrl);
 
-            const extracted = await extractSSCData(notice.pdfUrl);
+            const extracted = await extractData(notice.pdfUrl);
 
             if (!extracted.title) {
                 skipped++;

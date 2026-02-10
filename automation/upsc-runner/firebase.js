@@ -1,5 +1,16 @@
+/* eslint-env node */
 import admin from "firebase-admin";
-import serviceAccount from "../serviceAccountKey.json" with { type: "json" };
+
+let serviceAccount;
+
+if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+} else {
+    const localKey = await import("../serviceAccountKey.json", {
+        assert: { type: "json" }
+    });
+    serviceAccount = localKey.default;
+}
 
 if (!admin.apps.length) {
     admin.initializeApp({
@@ -8,4 +19,3 @@ if (!admin.apps.length) {
 }
 
 export const db = admin.firestore();
-export { admin };

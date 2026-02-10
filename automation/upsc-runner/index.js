@@ -2,7 +2,8 @@ import cron from "node-cron";
 import { db } from "./firebase.js";
 
 import { fetchUPSCNotices } from "./sources/upsc.js";
-import { extractSSCData } from "./utils/pdf.js";
+import { extractData } from "./utils/pdf.js";
+
 
 
 import { buildDedupeKey, isDuplicate } from "./utils/dedupe.js";
@@ -28,7 +29,7 @@ async function runAutomation() {
         try {
             console.log("\n📥 Processing:", notice.pdfUrl);
 
-            const extracted = await extractSSCData(notice.pdfUrl);
+            const extracted = await extractData(notice.pdfUrl);
 
             if (!extracted.title) {
                 skipped++;
@@ -95,6 +96,3 @@ async function runAutomation() {
 
 // Run once (Render / manual)
 runAutomation();
-
-// Daily at 00:40 (Render cron)
-cron.schedule("40 0 * * *", runAutomation);
